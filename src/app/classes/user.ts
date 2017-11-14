@@ -6,4 +6,5 @@
     lastName: string;
     isTeacher: boolean;
     trigram: string;
+    group: string;
 }
