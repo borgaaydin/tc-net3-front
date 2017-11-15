@@ -1,0 +1,36 @@
+$dark-blue: #164686;
+
+html,
+body {
+  font-family: 'Roboto Condensed', sans-serif;
+  background-color: #EFF0F4;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  background-color: $dark-blue;
+  color: #ffffff;
+}
+
+.navbar-header {
+  width: 100%;
+}
+
+.logout-button {
+  float: right;
+  padding: 4px 20px;
+  background-color: white;
+  color: $dark-blue;
+  text-decoration: none;
+}
+
+.logout-button:hover,
+.logout-button:focus{
+  color: white;
+  text-decoration: none;
+}
+
+.content {
+  margin-top: 60px;
+}

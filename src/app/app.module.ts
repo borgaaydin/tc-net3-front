@@ -30,7 +30,8 @@ import { ProfileComponent } from './components/profile/index';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    ProfileComponent
+    ProfileComponent,
+    RegisterComponent
   ],
   providers: [
     customHttpProvider,
