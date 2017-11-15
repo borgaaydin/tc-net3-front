@@ -1,5 +1,12 @@
 $dark-blue: #164686;
 
+@mixin vendorize($property, $value) {
+  -webkit-#{$property}: $value;
+  -moz-#{$property}: $value;
+  -ms-#{$property}: $value;
+  -o-#{$property}: $value;
+}
+
 html,
 body {
   font-family: 'Roboto Condensed', sans-serif;
@@ -17,11 +24,23 @@ body {
   width: 100%;
 }
 
+.white-button {
+  background-color: white;
+  color: $dark-blue;
+  border: 2px solid transparent;
+
+  @include vendorize(transition, all .5s);
+
+  &:hover {
+    background-color: $dark-blue;
+    color: white;
+    border: 2px solid white;
+  }
+}
+
 .logout-button {
   float: right;
   padding: 4px 20px;
-  background-color: white;
-  color: $dark-blue;
   text-decoration: none;
 }
 
