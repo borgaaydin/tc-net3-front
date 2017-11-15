@@ -15,6 +15,7 @@ import { AlertService, AuthenticationService, UserService } from './services/ind
 import { HomeComponent } from './components/home/index';
 import { LoginComponent } from './components/login/index';
 import { RegisterComponent } from './components/register/index';
+import { ProfileComponent } from './components/profile/index';
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import { RegisterComponent } from './components/register/index';
     AlertComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProfileComponent
   ],
   providers: [
     customHttpProvider,

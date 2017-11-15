@@ -15,6 +15,10 @@ export class UserService {
         return this.http.get('/users/' + _id).map((response: Response) => response.json());
     }
 
+    current() {
+        return this.http.get('/users/current/').map((response: Response) => response.json());
+    }
+
     create(user: User) {
         return this.http.post('/users/register', user);
     }
