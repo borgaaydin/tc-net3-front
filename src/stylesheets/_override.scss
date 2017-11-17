@@ -1,3 +1,14 @@
-input {
+input.form-control {
   border-radius: 0;
+}
+
+.has-error {
+  position: relative;
+}
+
+.help-block {
+  position: absolute;
+  padding: 4px 10px;
+  right: 0;
+  top: 0;
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { User } from '../../classes/index';
+import { User } from '../../classes/user';
 import { AlertService, UserService } from '../../services/index';
 
 @Component({
@@ -13,6 +13,7 @@ export class ProfileComponent implements OnInit {
     currentUser: User;
     model: any = {};
     loading = false;
+    courses: {};
 
     constructor(
         private router: Router,
@@ -29,6 +30,7 @@ export class ProfileComponent implements OnInit {
 
     private loadUser() {
         this.userService.current().subscribe(user => { this.model = user; });
+        this.userService.getCourses(this.currentUser._id).subscribe(courses => { this.courses = courses; });
     }
 
     update() {

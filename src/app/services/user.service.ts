@@ -30,4 +30,8 @@ export class UserService {
     delete(_id: string) {
         return this.http.delete('/users/' + _id);
     }
+
+    getCourses(_id: string) {
+      return this.http.get('/courses/').map((response: Response) => response.json());
+    }
 }
