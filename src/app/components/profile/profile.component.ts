@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { User } from '../../classes/index';
-import { AlertService, UserService } from '../../services/index';
+import { AlertService, UserService, SubjectService } from '../../services/index';
 
 @Component({
     moduleId: module.id,
@@ -12,12 +12,14 @@ import { AlertService, UserService } from '../../services/index';
 export class ProfileComponent implements OnInit {
     currentUser: User;
     model: any = {};
+    subjects: any = {};
     loading = false;
 
     constructor(
         private router: Router,
         private userService: UserService,
         private alertService: AlertService,
+        private subjectService: SubjectService,
     ) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
@@ -25,10 +27,15 @@ export class ProfileComponent implements OnInit {
     ngOnInit() {
         this.model = this.currentUser;
         this.loadUser();
+        this.loadSubjects();
     }
 
     private loadUser() {
         this.userService.current().subscribe(user => { this.model = user; });
+    }
+
+    private loadSubjects() {
+        this.subjectService.getAll().subscribe(subjects => {this.subjects = subjects; });
     }
 
     update() {

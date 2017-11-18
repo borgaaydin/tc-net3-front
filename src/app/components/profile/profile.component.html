@@ -22,9 +22,16 @@
           <div *ngIf="f.submitted && !trigram.valid" class="help-block">Trigram is required</div>
         </div>
         <div class="form-group" *ngIf="!model.isTeacher" [ngClass]="{ 'has-error': f.submitted && !group.valid }">
-          <label for="trigram">Group</label>
+          <label for="group">Group</label>
           <input type="text" class="form-control" name="group" [(ngModel)]="model.group" #group="ngModel" required />
           <div *ngIf="f.submitted && !group.valid" class="help-block">Group is required</div>
+        </div>
+        <div class="form-group" *ngIf="!model.isTeacher">
+          <ul>
+           <li *ngFor="let subject of subjects">
+             {{ subject.name }} ( {{ subject.year }} )
+           </li>
+          </ul>
         </div>
         <div class="form-group">
             <button [disabled]="loading" class="btn btn-primary">Update</button>

@@ -11,7 +11,7 @@ import { routing } from './app.routes';
 import { customHttpProvider } from './injectables/helpers/index';
 import { AlertComponent } from './components/alert/index';
 import { AuthGuard } from './injectables/guards/index';
-import { AlertService, AuthenticationService, UserService } from './services/index';
+import { AlertService, AuthenticationService, UserService, SubjectService } from './services/index';
 import { HomeComponent } from './components/home/index';
 import { LoginComponent } from './components/login/index';
 import { RegisterComponent } from './components/register/index';
@@ -38,7 +38,8 @@ import { ProfileComponent } from './components/profile/index';
     AuthGuard,
     AlertService,
     AuthenticationService,
-    UserService
+    UserService,
+    SubjectService
   ],
   bootstrap: [AppComponent]
 })
