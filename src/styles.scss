@@ -7,9 +7,11 @@ $dark-blue: #164686;
   -o-#{$property}: $value;
 }
 
+@import "stylesheets/override";
+
 html,
 body {
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: 'Roboto', sans-serif;
   background-color: #EFF0F4;
 }
 
