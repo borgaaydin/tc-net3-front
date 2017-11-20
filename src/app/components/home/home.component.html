@@ -1,20 +1,37 @@
 ﻿<div class="col-sm-6 home__left-block">
-    <h2>Bienvenue <br>
-      <span style="color: #EC334D;">{{currentUser.firstName}}</span></h2>
-    <p></p>
-    <div>
-
+    <div class="home__lb-welcome">
+      <h2>Bienvenue <br>
+        <span style="color: #EC334D;">{{currentUser.firstName}}</span></h2>
+      <div>
+    </div>
     </div>
 
 </div>
 <div class="col-sm-6 home__right-block">
-  <h3>
-    A venir...
-  </h3>
-  <ul>
-    <li  *ngFor="let course of courses">
-      {{ course.subject }}
+  <div class="home__rb-head">
+    <h3>
+      Aujourd'hui et demain...
+    </h3>
+  </div>
+  <div class="home__rb-content">
+    <ul class="home__course-list">
+      <li  *ngFor="let course of courses">
+        <div class="course__left-block">
+          <div class="course-subject">
+            {{ course.subject }}
+          </div>
+          <div>
+            <span *ngFor="let room of course.room">
+              {{ room }}
+            </span>
+          </div>
 
-    </li>
-  </ul>
+        </div>
+        <div class="course__right-block">
+
+        </div>
+
+      </li>
+    </ul>
+  </div>
 </div>
