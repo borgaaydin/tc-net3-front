@@ -4,10 +4,12 @@
     <div class="container">
       <div class="navbar-header">
         <a class="logo" href="#">
-          TC_NET 3
+          TC NET v3.0
         </a>
-        <a class="white-button logout-button" [routerLink]="['/login']">Logout</a>
-        <a class="white-button logout-button" [routerLink]="['/profile']">Profile</a>
+        <div class="navbar-right">
+          <a class="white-button profile-button" [routerLink]="['/profile']">Profile</a>
+          <a class="white-button logout-button" [routerLink]="['/login']">Logout</a>
+        </div>
       </div>
     </div>
   </div>
