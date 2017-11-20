@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
 
         var d = new Date();
         d.setHours(23,59,59,999);
-        this.today = d.getTime() / 1000;
+        this.today = d.getTime();
     }
 
     deleteUser(_id: string) {
