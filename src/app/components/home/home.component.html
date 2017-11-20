@@ -5,6 +5,7 @@
           {{currentUser.firstName}}
           <span class="user__type-info">
             <span *ngIf="currentUser.isTeacher">Enseignant</span>
+            <span *ngIf="!currentUser.isTeacher">Étudiant</span>
           </span>
         </span>
       </h2>
