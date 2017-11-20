@@ -45,7 +45,7 @@ export class CallComponent implements OnInit {
         if (user.isPres) {
           user.isPres = false;
           user.isAbs = true;
-          var index = this.presents.indexOf(user._id);
+          let index = this.presents.indexOf(user._id);
           if (index > -1) {
               this.presents.splice(index, 1);
           }
@@ -53,7 +53,7 @@ export class CallComponent implements OnInit {
         } else {
             user.isMarked = false;
             user.isAbs = false;
-            var index = this.absents.indexOf(user._id);
+            let index = this.absents.indexOf(user._id);
             if (index > -1) {
                 this.absents.splice(index, 1);
             }
@@ -71,15 +71,15 @@ export class CallComponent implements OnInit {
       if (user.isAbs) {
         user.isPres = true;
         user.isAbs = false;
-        var index = this.absents.indexOf(user._id);
+        let index = this.absents.indexOf(user._id);
         if (index > -1) {
             this.absents.splice(index, 1);
         }
         this.presents.push(user._id);
       } else {
           user.isMarked = false;
-          user.Pres = false;
-          var index = this.presents.indexOf(user._id);
+          user.isPres = false;
+          let index = this.presents.indexOf(user._id);
           if (index > -1) {
               this.presents.splice(index, 1);
           }
