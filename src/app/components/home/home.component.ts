@@ -11,28 +11,36 @@ import { UserService, CourseService } from '../../services/index';
 
 export class HomeComponent implements OnInit {
     currentUser: User;
-    users: User[] = [];
     courses: {};
+    absences: {};
 
-    constructor(private userService: UserService,
-                private courseService: CourseService) {
+    constructor(
+        private userService: UserService,
+        private courseService: CourseService) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
 
     ngOnInit() {
-        this.loadAllUsers();
-        this.getMyCourses();
+        if ( this.currentUser.isTeacher ) {
+            this.getMyCourses();
+        } else {
+            this.getMyAbsences();
+        }
     }
 
     deleteUser(_id: string) {
-        this.userService.delete(_id).subscribe(() => { this.loadAllUsers() });
+        this.userService.delete(_id).subscribe(() => {  });
     }
 
-    private loadAllUsers() {
-        this.userService.getAll().subscribe(users => { this.users = users; });
-    }
+    // private loadAllUsers() {
+    //     this.userService.getAll().subscribe(users => { this.users = users; });
+    // }
+
     private getMyCourses() {
       this.courseService.getMyCourses().subscribe(courses => { this.courses = courses; });
-      console.log(this.courses);
+    }
+
+    private getMyAbsences() {
+        this.userService.getMyAbsences().subscribe(absences => { this.absences = absences; });
     }
 }

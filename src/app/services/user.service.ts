@@ -30,4 +30,8 @@ export class UserService {
     delete(_id: string) {
         return this.http.delete('/users/' + _id);
     }
+
+    getMyAbsences() {
+        return this.http.get('/users/current/absences/').map((response: Response) => response.json());
+    }
 }
