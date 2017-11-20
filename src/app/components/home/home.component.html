@@ -22,7 +22,7 @@
       <div class="home__lb-call-content">
         <ul *ngIf="currentUser.isTeacher" class="home__call-list">
           <li *ngFor="let course of courses">
-            <div>
+            <div *ngIf="course.startTime < today">
               <div class="course-subject">
                 <span>
                   {{ course.subject }}
@@ -34,12 +34,11 @@
               <div class="course-time">
                 {{ course.startTime | date: 'HH:mm' }} - {{ course.endTime | date: 'HH:mm'}}
               </div>
+
+              <button class="button" [routerLink]="['/call', course._id]">
+                FAIRE UN APPEL
+              </button>
             </div>
-
-
-            <button class="button" [routerLink]="['/call', course._id]">
-              FAIRE UN APPEL
-            </button>
           </li>
         </ul>
         <ul *ngIf="!currentUser.isTeacher" class="home__absence-list">
@@ -64,6 +63,7 @@
             {{ course.subject }}
           </div>
           <div>
+            <span>{{ course.startTime | date:'shortDate' }}</span>
             <span *ngFor="let room of course.room">
               {{ room }}
             </span>
