@@ -64,7 +64,7 @@
             {{ course.subject }}
           </div>
           <div>
-            <span>{{ course.startTime | date:'shortDate' }}</span>
+            <span>{{ course.startTime | date:'short' }}</span> - 
             <span *ngFor="let room of course.room">
               {{ room }}
             </span>
