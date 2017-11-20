@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
     currentUser: User;
     courses: {};
     absences: {};
+    today: number;
 
     constructor(
         private userService: UserService,
@@ -26,6 +27,10 @@ export class HomeComponent implements OnInit {
         } else {
             this.getMyAbsences();
         }
+
+        var d = new Date();
+        d.setHours(23,59,59,999);
+        this.today = d.getTime();
     }
 
     private getMyCourses() {
