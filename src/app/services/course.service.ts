@@ -8,4 +8,8 @@ export class CourseService {
   getMyCourses() {
     return this.http.get('/courses').map((response: Response) => response.json());
   }
+
+  getCourseInfoById(cours_id) {
+    return this.http.get('/courses/' + cours_id).map((response: Response) => response.json());
+  }
 }

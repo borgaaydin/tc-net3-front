@@ -16,6 +16,7 @@ import { HomeComponent } from './components/home/index';
 import { LoginComponent } from './components/login/index';
 import { RegisterComponent } from './components/register/index';
 import { ProfileComponent } from './components/profile/index';
+import { CallComponent } from './components/call/call.component';
 
 @NgModule({
   imports: [
@@ -31,7 +32,8 @@ import { ProfileComponent } from './components/profile/index';
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    RegisterComponent
+    RegisterComponent,
+    CallComponent
   ],
   providers: [
     customHttpProvider,

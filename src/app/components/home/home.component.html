@@ -20,7 +20,7 @@
         </h3>
       </div>
       <div class="home__lb-call-content">
-        <ul class="home__call-list">
+        <ul *ngIf="currentUser.isTeacher" class="home__call-list">
           <li *ngFor="let course of courses">
             <div>
               <div class="course-subject">
@@ -37,7 +37,7 @@
             </div>
 
 
-            <button class="button">
+            <button class="button" [routerLink]="['/call', course._id]">
               FAIRE UN APPEL
             </button>
           </li>
