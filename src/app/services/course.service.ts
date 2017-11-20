@@ -3,7 +3,6 @@ import { Http, Headers, RequestOptions, Response } from '@angular/http';
 
 @Injectable()
 export class CourseService {
-
   constructor(private http: Http) { }
 
   getMyCourses() {
