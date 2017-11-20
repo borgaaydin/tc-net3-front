@@ -19,7 +19,7 @@ export class CallComponent implements OnInit {
   course_id;
   absents:  Array<string> = [];
   presents: Array<string> = [];
-  course: Object;
+  course: any = {};
   response;
 
   ngOnInit() {
@@ -41,21 +41,56 @@ export class CallComponent implements OnInit {
       user.isAbs = true;
       user.isPres = false;
       this.absents.push(user._id);
+    } else {
+        if (user.isPres) {
+          user.isPres = false;
+          user.isAbs = true;
+          var index = this.presents.indexOf(user._id);
+          if (index > -1) {
+              this.presents.splice(index, 1);
+          }
+          this.absents.push(user._id);
+        } else {
+            user.isMarked = false;
+            user.isAbs = false;
+            var index = this.absents.indexOf(user._id);
+            if (index > -1) {
+                this.absents.splice(index, 1);
+            }
+        }
     }
   }
+
   private setPresent(user) {
     if (!user.isMarked) {
       user.isMarked = true;
       user.isPres = true;
       user.isAbs = false;
       this.presents.push(user._id);
-    }
+  } else {
+      if (user.isAbs) {
+        user.isPres = true;
+        user.isAbs = false;
+        var index = this.absents.indexOf(user._id);
+        if (index > -1) {
+            this.absents.splice(index, 1);
+        }
+        this.presents.push(user._id);
+      } else {
+          user.isMarked = false;
+          user.Pres = false;
+          var index = this.presents.indexOf(user._id);
+          if (index > -1) {
+              this.presents.splice(index, 1);
+          }
+      }
   }
-  private checkRollSum() {
+  }
+  checkRollSum() {
     const rollSum = this.absents.length + this.presents.length;
     return rollSum === Object.keys(this.users).length;
   }
-  private sendRollCall() {
+  sendRollCall() {
     if (this.checkRollSum()) {
       const roll = {'absent' : [], 'present': []};
       roll.absent = this.absents;
