@@ -1,11 +1,49 @@
 ﻿<div class="col-sm-6 home__left-block">
     <div class="home__lb-welcome">
       <h2>Bienvenue <br>
-        <span style="color: #EC334D;">{{currentUser.firstName}}</span></h2>
-      <div>
-    </div>
+        <span class="user__info" style="color: #EC334D;">
+          {{currentUser.firstName}}
+          <span class="user__type-info">
+            <span *ngIf="currentUser.isTeacher">Enseignant</span>
+          </span>
+        </span>
+      </h2>
     </div>
 
+    <div class="home__lb-call">
+      <div class="home__lb-call-head">
+        <h3 *ngIf="currentUser.isTeacher">
+          Appels
+        </h3>
+        <h3 *ngIf="!currentUser.isTeacher">
+          Absences
+        </h3>
+      </div>
+      <div class="home__lb-call-content">
+        <ul class="home__call-list">
+          <li *ngFor="let course of courses">
+            <div>
+              <div class="course-subject">
+                <span>
+                  {{ course.subject }}
+                </span>
+                <span *ngFor="let room of course.room">
+                  {{ room }}
+                </span>
+              </div>
+              <div class="course-time">
+                {{ course.startTime | date: 'HH:mm' }} - {{ course.endTime | date: 'HH:mm'}}
+              </div>
+            </div>
+
+
+            <button class="button">
+              FAIRE UN APPEL
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
 </div>
 <div class="col-sm-6 home__right-block">
   <div class="home__rb-head">

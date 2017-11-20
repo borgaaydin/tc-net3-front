@@ -1,13 +1,56 @@
-@mixin vendorize($property, $value) {
-  -webkit-#{$property}: $value;
-  -moz-#{$property}: $value;
-  -ms-#{$property}: $value;
-  -o-#{$property}: $value;
-}
+@import '../../../stylesheets/mixins';
 
 .home__lb-welcome {
   h2 {
     font-size: 48px;
+  }
+
+  .user__info {
+    position: relative;
+  }
+
+  .user__type-info {
+    position: absolute;
+    left: 100%;
+    bottom: 10px;
+    margin-left: 10px;
+    font-size: 12px;
+    color: white;
+    background: #EC334D;
+    padding: 4px 8px;
+    border-radius: 3px;
+  }
+}
+
+.home__lb-call {
+  background-color: white;
+  @include clearfix;
+}
+
+.home__lb-call-head {
+  height: 40px;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  @include vendorize(box-shadow, 0 3px 20px -4px rgba(0, 0, 0, 0.10));
+  @include clearfix;
+
+  h3 {
+    font-weight: 300;
+    margin: 10px 0;
+  }
+}
+
+.home__call-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 15px 20px 15px;
+
+  li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 }
 
