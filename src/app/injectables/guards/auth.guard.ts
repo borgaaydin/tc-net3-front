@@ -14,7 +14,7 @@ export class AuthGuard implements CanActivate {
         if (token) {
             if (tokenPayload.scope === 'ens') {
               // logged in as teacher
-              this.router.navigate(['/profile'], { queryParams: { returnUrl: state.url }});
+
             }
             // logged in so return true
             return true;

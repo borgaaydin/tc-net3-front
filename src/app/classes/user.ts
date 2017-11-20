@@ -7,4 +7,5 @@
     isTeacher: boolean;
     trigram: string;
     group: string;
+    subjects: string;
 }

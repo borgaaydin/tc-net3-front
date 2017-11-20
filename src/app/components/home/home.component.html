@@ -1,5 +1,19 @@
 ﻿<div class="col-sm-6">
-    <h1>Bienvenue {{currentUser.firstName}}!</h1>
+    <h2>Bienvenue <br>
+      <span style="color: #EC334D;">{{currentUser.firstName}}</span></h2>
     <p></p>
+    <div>
 
+    </div>
+
+</div>
+<div class="col-sm-6">
+  <h3>
+    A venir...
+  </h3>
+  <ul *ngFor="let course of courses">
+    <li>
+      {{ course }}
+    </li>
+  </ul>
 </div>

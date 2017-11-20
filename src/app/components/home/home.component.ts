@@ -2,6 +2,7 @@
 
 import { User } from '../../classes/User';
 import { UserService } from '../../services/index';
+import { CourseService } from '../../services/course.service';
 
 @Component({
     moduleId: module.id,
@@ -11,13 +12,16 @@ import { UserService } from '../../services/index';
 export class HomeComponent implements OnInit {
     currentUser: User;
     users: User[] = [];
+    courses: {};
 
-    constructor(private userService: UserService) {
+    constructor(private userService: UserService,
+                private courseService: CourseService) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
 
     ngOnInit() {
         this.loadAllUsers();
+        this.getMyCourses();
     }
 
     deleteUser(_id: string) {
@@ -26,5 +30,9 @@ export class HomeComponent implements OnInit {
 
     private loadAllUsers() {
         this.userService.getAll().subscribe(users => { this.users = users; });
+    }
+    private getMyCourses() {
+      this.courseService.getMyCourses().subscribe(courses => { this.courses = courses; });
+
     }
 }
