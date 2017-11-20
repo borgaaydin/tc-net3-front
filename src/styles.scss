@@ -24,16 +24,41 @@ body {
 
 .navbar-header {
   width: 100%;
+
 }
 
-.navbar-right {
+.navbarRight {
   float: right;
+  margin-top: 7px;
 }
 
 .logo {
   color: white;
   font-weight: 700;
   font-size: 24px;
+
+  &:hover,
+  &:focus {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+button,
+a {
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+}
+
+button {
+  background-color: #1C8AE5;
+  color: white;
+  padding: 4px 20px;
+  text-decoration: none;
+  border-radius: 0;
+  border: 0;
 }
 
 .white-button {

@@ -7,6 +7,7 @@
 }
 
 @mixin vendorize($property, $value) {
+  #{$property} : $value;
   -webkit-#{$property}: $value;
   -moz-#{$property}: $value;
   -ms-#{$property}: $value;

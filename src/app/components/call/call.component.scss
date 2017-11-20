@@ -1,0 +1,63 @@
+@import '../../../stylesheets/mixins';
+
+.callroll__head {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.callroll__list {
+  padding: 0;
+  margin: 20px 0;
+  list-style: none;
+
+  li {
+    height: 60px;
+    background-color: white;
+    border-bottom: 1px solid #c7c7c7;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 0 20px;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+.callroll__user {
+  font-size: 20px;
+}
+
+.callroll__lastname {
+  font-weight: 700;
+}
+
+.button__finish-roll {
+  border-radius: 0;
+  background-color: #EC334D;
+  height: 36px;
+  border: 0;
+  @include vendorize(box-shadow, 0 3px 6px rgba(236, 51, 77, 0.45));
+
+  &:disabled {
+    opacity: 0.6;
+  }
+}
+
+.button__absent {
+  margin-left: 10px;
+  color: rgba(0, 0, 0, 0.5);
+  background-color: #ecc621;
+  @include vendorize(box-shadow, 0 3px 6px rgba(236, 198, 33, 0.4));
+}
+
+.button__present {
+  margin-left: 10px;
+  color: rgba(0, 0, 0, 0.5);
+  background-color: #3aec67;
+  @include vendorize(box-shadow, 0 3px 6px rgba(58, 236, 103, 0.4));
+}

@@ -1,22 +1,56 @@
-<div class="col-xs-12">
-  <button>
-    TERMINER APPEL
-  </button>
-  <ul>
-    <li *ngFor="let user of users">
-      {{ user.username }}
+<div class="col-xs-12 col-md-8 col-md-offset-2">
+  <h2>
+    Fiche d'Appel
+  </h2>
+  <div class="callroll__head">
+    <div class="callroll__title">
+      <h1>
+        {{ course.subject }}
+      </h1>
+      <div>
+        <span>
+          {{ course.startTime | date: 'HH:mm' }}
+        </span>
+        <span> - </span>
+        <span>
+          {{ course.endTime | date: 'HH:mm' }}
+        </span>
+
+        <span>
+          {{ course.startTime | date: 'EEEE dd MMMM yyyy' }}
+        </span>
+      </div>
+
+    </div>
+
+    <button class="button__finish-roll" [disabled]="!cheackRollSum()">
+      TERMINER APPEL
+    </button>
+  </div>
+
+  <ul class="callroll__list">
+    <li *ngFor="let user of users" [ngClass]="{'absent': !user.isPresent, 'present': user.isPresent}">
+      <div class="callroll__user">
+        {{ user.firstName }}
+        <span class="callroll__lastname">
+          {{ user.lastName }}
+        </span>
+        <span>
+          {{ user.group }}
+        </span>
+      </div>
 
       <div>
-        <button (click)="setAbsent(user)">
+        <button class="button__absent" (click)="setAbsent(user)">
           Absent
         </button>
-        <button (click)="setPresent(user)">
+        <button class="button__present" (click)="setPresent(user)">
           Présent
         </button>
       </div>
     </li>
   </ul>
-  <button>
+  <button class="button__finish-roll" [disabled]="!cheackRollSum()">
     TERMINER APPEL
   </button>
 </div>

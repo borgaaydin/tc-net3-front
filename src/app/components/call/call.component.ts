@@ -16,14 +16,19 @@ export class CallComponent implements OnInit {
   course_id;
   absents:  Array<string> = [];
   presents: Array<string> = [];
+  course: Object;
 
   ngOnInit() {
     this.course_id = this.route.snapshot.paramMap.get('id');
+    this.getCourseList(this.course_id);
     this.getCourseInfo(this.course_id);
   }
 
-  private getCourseInfo(course) {
+  private getCourseList(course) {
     this.courseService.getCourseStudentList(course).subscribe(users => { this.users = users; });
+  }
+  private getCourseInfo(course) {
+    this.courseService.getCourseInfoById(course).subscribe(cours => { this.course = cours; });
   }
 
   private setAbsent(user) {
@@ -38,12 +43,11 @@ export class CallComponent implements OnInit {
       this.presents.push(user._id);
     }
   }
-  private sendRollCall() {
+  private cheackRollSum() {
     const rollSum = this.absents.length + this.presents.length;
-    console.log(rollSum);
-    console.log(Object.keys(this.users).length);
-    if (rollSum === Object.keys(this.users).length) {
-      console.log();
-    }
+    return rollSum === Object.keys(this.users).length;
+  }
+  private sendRollCall() {
+
   }
 }

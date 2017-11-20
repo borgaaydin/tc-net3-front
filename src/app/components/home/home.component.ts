@@ -28,14 +28,6 @@ export class HomeComponent implements OnInit {
         }
     }
 
-    deleteUser(_id: string) {
-        this.userService.delete(_id).subscribe(() => {  });
-    }
-
-    // private loadAllUsers() {
-    //     this.userService.getAll().subscribe(users => { this.users = users; });
-    // }
-
     private getMyCourses() {
       this.courseService.getMyCourses().subscribe(courses => { this.courses = courses; });
     }
