@@ -28,8 +28,8 @@ export class HomeComponent implements OnInit {
             this.getMyAbsences();
         }
 
-        var d = new Date();
-        d.setHours(23,59,59,999);
+        const d = new Date();
+        d.setHours(23, 59, 59, 999);
         this.today = d.getTime();
     }
 

@@ -21,9 +21,26 @@
     justify-content: space-between;
     flex-direction: row;
     padding: 0 20px;
+    @include vendorize(transition, .5s background-color);
 
     &:last-child {
       border-bottom: none;
+    }
+
+    &.absent {
+      background-color: rgba(236, 198, 33, 0.1);
+
+      .button__present {
+        opacity: 0.5;
+      }
+    }
+
+    &.present {
+      background-color: rgba(58, 236, 103, 0.1);
+
+      .button__absent {
+        opacity: 0.5;
+      }
     }
   }
 }
@@ -37,6 +54,7 @@
 }
 
 .button__finish-roll {
+  outline: 0;
   border-radius: 0;
   background-color: #EC334D;
   height: 36px;
@@ -49,15 +67,20 @@
 }
 
 .button__absent {
+  outline: 0;
   margin-left: 10px;
   color: rgba(0, 0, 0, 0.5);
   background-color: #ecc621;
   @include vendorize(box-shadow, 0 3px 6px rgba(236, 198, 33, 0.4));
+  @include vendorize(transition, .5s all);
+
 }
 
 .button__present {
+  outline: 0;
   margin-left: 10px;
   color: rgba(0, 0, 0, 0.5);
   background-color: #3aec67;
   @include vendorize(box-shadow, 0 3px 6px rgba(58, 236, 103, 0.4));
+  @include vendorize(transition, .5s all);
 }

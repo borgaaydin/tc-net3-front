@@ -16,4 +16,8 @@ export class CourseService {
   getCourseStudentList(cours_id) {
     return this.http.get('/courses/rollcall/' + cours_id).map((response: Response) => response.json());
   }
+
+  postRollcall(cours_id, roll) {
+    return this.http.post('/courses/rollcall/' + cours_id, roll);
+  }
 }

@@ -23,13 +23,13 @@
 
     </div>
 
-    <button class="button__finish-roll" [disabled]="!cheackRollSum()">
+    <button class="button__finish-roll" [disabled]="!checkRollSum()" (click)="sendRollCall()">
       TERMINER APPEL
     </button>
   </div>
 
   <ul class="callroll__list">
-    <li *ngFor="let user of users" [ngClass]="{'absent': !user.isPresent, 'present': user.isPresent}">
+    <li *ngFor="let user of users" [ngClass]="{'absent': user.isAbs, 'present': user.isPres}">
       <div class="callroll__user">
         {{ user.firstName }}
         <span class="callroll__lastname">
@@ -41,7 +41,7 @@
       </div>
 
       <div>
-        <button class="button__absent" (click)="setAbsent(user)">
+        <button class="button__absent" ngClass="" (click)="setAbsent(user)">
           Absent
         </button>
         <button class="button__present" (click)="setPresent(user)">
@@ -50,7 +50,7 @@
       </div>
     </li>
   </ul>
-  <button class="button__finish-roll" [disabled]="!cheackRollSum()">
+  <button class="button__finish-roll" [disabled]="!checkRollSum()" (click)="sendRollCall()">
     TERMINER APPEL
   </button>
 </div>
