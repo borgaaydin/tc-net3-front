@@ -21,16 +21,18 @@ export class CallComponent implements OnInit {
   presents: Array<string> = [];
   course: any = {};
   response;
-  noStudents: number = 0;
+  noStudents = 0;
 
   ngOnInit() {
     this.course_id = this.route.snapshot.paramMap.get('id');
     this.getCourseList(this.course_id);
     this.getCourseInfo(this.course_id);
+
+    this.noStudents = Object.keys(this.users).length;
   }
 
   private getCourseList(course) {
-    this.courseService.getCourseStudentList(course).subscribe(users => { this.users = users; this.noStudents = Object.keys(this.users).length; });
+    this.courseService.getCourseStudentList(course).subscribe(users => { this.users = users;});
   }
   private getCourseInfo(course) {
     this.courseService.getCourseInfoById(course).subscribe(cours => { this.course = cours; });

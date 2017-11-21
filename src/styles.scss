@@ -106,3 +106,40 @@ button {
 .content {
   margin-top: 60px;
 }
+
+
+@media screen and (max-width: 767px) {
+
+  .navbar-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .navbarRight {
+    display: flex;
+  }
+
+  .logo {
+    font-size: 14px;
+    line-height: 14px;
+  }
+
+  .home__left-block {
+    padding: 0;
+  }
+
+  .home__lb-course {
+    button {
+      font-size: 10px;
+    }
+  }
+
+  .home__rb-head {
+    display: flex;
+  }
+
+  .home__right-block {
+    margin-top: 10px;
+  }
+}

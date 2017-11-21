@@ -12,9 +12,11 @@ import { AlertService, UserService, SubjectService } from '../../services/index'
 export class ProfileComponent implements OnInit {
     currentUser: User;
     model: any = {};
-    subjects: any = {};
+    subjects: any = [];
     loading = false;
-    courses: {};
+    dropdownList = [];
+    selectedItems = [];
+    dropdownSettings = {};
 
     constructor(
         private router: Router,
@@ -29,6 +31,18 @@ export class ProfileComponent implements OnInit {
         this.model = this.currentUser;
         this.loadUser();
         this.loadSubjects();
+
+        this.dropdownSettings = {
+          singleSelection: false,
+          text: 'Choisissez vos matières',
+          selectAllText: 'Tout choisir',
+          unSelectAllText: 'Tout supprimer',
+          enableSearchFilter: true,
+          classes: 'myclass custom-class',
+          searchPlaceholderText: 'Recherche',
+          groupBy: 'year',
+          enableCheckAll: false
+        };
     }
 
     private loadUser() {
@@ -36,11 +50,24 @@ export class ProfileComponent implements OnInit {
     }
 
     private loadSubjects() {
-        this.subjectService.getAll().subscribe(subjects => {this.subjects = subjects; });
+        this.subjectService.getAll().subscribe(subjects => {
+          this.subjects = subjects;
+          const dropdownSubjects = JSON.parse(JSON.stringify(this.subjects)
+            .split('"_id":').join('"id":').split('"subject":').join('"itemName":'));
+          this.dropdownList = dropdownSubjects;
+          this.selectedItems = this.model.subjects;
+        });
     }
 
     update() {
         this.loading = true;
+        if (!this.model.isTeacher) {
+          this.model.subjects = [];
+          this.selectedItems.forEach(eachObj => {
+            const object = {'id': eachObj.id, 'itemName': eachObj.itemName};
+            this.model.subjects.push(object);
+          });
+        }
         this.userService.update(this.model)
             .subscribe(
                 data => {

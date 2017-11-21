@@ -17,13 +17,15 @@ import { LoginComponent } from './components/login/index';
 import { RegisterComponent } from './components/register/index';
 import { ProfileComponent } from './components/profile/index';
 import { CallComponent } from './components/call/call.component';
+import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    routing
+    routing,
+    AngularMultiSelectModule
   ],
   declarations: [
     AppComponent,

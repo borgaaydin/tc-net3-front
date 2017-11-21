@@ -27,11 +27,12 @@
           <div *ngIf="f.submitted && !group.valid" class="help-block">Group is required</div>
         </div>
         <div class="form-group" *ngIf="!model.isTeacher">
-          <ul>
-           <li *ngFor="let subject of subjects">
-             {{ subject.name }} ( {{ subject.year }} )
-           </li>
-          </ul>
+          <label for="course">Cours inscrits</label>
+          <angular2-multiselect [data]="dropdownList"
+                                [(ngModel)]="selectedItems"
+                                [settings]="dropdownSettings"
+                                [ngModelOptions]="{standalone: true}">
+          </angular2-multiselect>
         </div>
         <div class="form-group">
             <button [disabled]="loading" class="btn btn-primary">Update</button>

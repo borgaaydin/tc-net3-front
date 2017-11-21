@@ -13,7 +13,7 @@
   list-style: none;
 
   li {
-    height: 60px;
+    min-height: 60px;
     background-color: white;
     border-bottom: 1px solid #c7c7c7;
     display: flex;
@@ -83,4 +83,10 @@
   background-color: #3aec67;
   @include vendorize(box-shadow, 0 3px 6px rgba(58, 236, 103, 0.4));
   @include vendorize(transition, .5s all);
+}
+
+@media screen and (max-width: 767px) {
+  .callroll__head {
+    flex-direction: column;
+  }
 }
