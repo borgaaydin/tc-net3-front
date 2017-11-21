@@ -47,7 +47,7 @@
         </ul>
         <ul *ngIf="!currentUser.isTeacher" class="home__absence-list">
            <li *ngFor="let absence of absences">
-            {{ absence.type }} de {{ absence.subject }} le {{ absence.startTime | date: 'short' }}
+            {{ absence.type }} de {{ absence.subject }} le {{ absence.startTime | date: 'HH:mm dd MMMM yyyy' }}
            </li>
         </ul>
       </div>
