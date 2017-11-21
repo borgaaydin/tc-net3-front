@@ -53,7 +53,7 @@ export class ProfileComponent implements OnInit {
         this.subjectService.getAll().subscribe(subjects => {
           this.subjects = subjects;
           const dropdownSubjects = JSON.parse(JSON.stringify(this.subjects)
-            .split('"_id":').join('"id":').split('"subject":').join('"itemName":'));
+            .split('"_id":').join('"id":').split('"name":').join('"itemName":'));
           this.dropdownList = dropdownSubjects;
           this.selectedItems = this.model.subjects;
         });
@@ -64,8 +64,8 @@ export class ProfileComponent implements OnInit {
         if (!this.model.isTeacher) {
           this.model.subjects = [];
           this.selectedItems.forEach(eachObj => {
-            const object = {'id': eachObj.id, 'itemName': eachObj.itemName};
-            this.model.subjects.push(object);
+            let item = eachObj.itemName;
+            this.model.subjects.push(item);
           });
         }
         this.userService.update(this.model)
