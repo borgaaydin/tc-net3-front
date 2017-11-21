@@ -89,4 +89,13 @@
   .callroll__head {
     flex-direction: column;
   }
+  .button__absent,
+  .button__present{
+    min-width: 90px;
+  }
+
+  .button__absent {
+    margin-bottom: 10px;
+  }
+
 }
