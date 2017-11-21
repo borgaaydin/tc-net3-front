@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  apiUrl: "https://tc-net3.pcksr.net"
 };
