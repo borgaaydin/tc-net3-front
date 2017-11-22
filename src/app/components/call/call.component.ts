@@ -15,7 +15,7 @@ export class CallComponent implements OnInit {
               private alertService: AlertService,
               private courseService: CourseService,
               private route: ActivatedRoute) { }
-  users: {};
+  users: any = [];
   course_id;
   absents:  Array<string> = [];
   presents: Array<string> = [];
@@ -32,6 +32,10 @@ export class CallComponent implements OnInit {
   private getCourseList(course) {
     this.courseService.getCourseStudentList(course).subscribe(users => {
       this.users = users;
+      this.presents = [];
+      this.users.forEach(function (user) {
+          this.presents.push(user._id);
+      }, this);
       this.noStudents = Object.keys(this.users).length; });
   }
   private getCourseInfo(course) {
@@ -39,56 +43,23 @@ export class CallComponent implements OnInit {
   }
 
   private setAbsent(user) {
-    if (!user.isMarked) {
-      user.isMarked = true;
-      user.isAbs = true;
-      user.isPres = false;
-      this.absents.push(user._id);
-    } else {
-        if (user.isPres) {
-          user.isPres = false;
+      if (!user.isAbs) {
           user.isAbs = true;
+          this.absents.push(user._id);
           let index = this.presents.indexOf(user._id);
           if (index > -1) {
               this.presents.splice(index, 1);
           }
-          this.absents.push(user._id);
-        } else {
-            user.isMarked = false;
-            user.isAbs = false;
-            let index = this.absents.indexOf(user._id);
-            if (index > -1) {
-                this.absents.splice(index, 1);
-            }
-        }
-    }
-  }
-
-  private setPresent(user) {
-    if (!user.isMarked) {
-      user.isMarked = true;
-      user.isPres = true;
-      user.isAbs = false;
-      this.presents.push(user._id);
-  } else {
-      if (user.isAbs) {
-        user.isPres = true;
-        user.isAbs = false;
-        let index = this.absents.indexOf(user._id);
-        if (index > -1) {
-            this.absents.splice(index, 1);
-        }
-        this.presents.push(user._id);
       } else {
-          user.isMarked = false;
-          user.isPres = false;
-          let index = this.presents.indexOf(user._id);
+          user.isAbs = false;
+          this.presents.push(user._id);
+          let index = this.absents.indexOf(user._id);
           if (index > -1) {
-              this.presents.splice(index, 1);
+              this.absents.splice(index, 1);
           }
       }
   }
-  }
+
   checkRollSum() {
     const rollSum = this.absents.length + this.presents.length;
     return rollSum === Object.keys(this.users).length;
@@ -101,7 +72,7 @@ export class CallComponent implements OnInit {
 
       this.courseService.postRollcall(this.course_id, roll).subscribe(
         data => {
-          this.alertService.success('Appel est enregistré', true);
+          this.alertService.success('Appel enregistré', true);
           this.router.navigate(['/']);
         },
         error => {
