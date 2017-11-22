@@ -34,7 +34,7 @@
                 </span>
                 </div>
                 <div class="course-time">
-                  {{ course.startTime | date: 'HH:mm' }} - {{ course.endTime | date: 'HH:mm'}}
+                  {{ course.startTime - 3600000 | date: 'HH:mm' }} - {{ course.endTime - 3600000 | date: 'HH:mm'}}
                 </div>
               </div>
 
@@ -47,7 +47,7 @@
         </ul>
         <ul *ngIf="!currentUser.isTeacher" class="home__absence-list">
            <li *ngFor="let absence of absences">
-            {{ absence.type }} de {{ absence.subject }} le {{ absence.startTime | date: 'HH:mm dd MMMM yyyy' }}
+            {{ absence.type }} de {{ absence.subject }} le {{ absence.startTime - 3600000 | date: 'HH:mm dd MMMM yyyy' }}
            </li>
         </ul>
       </div>
@@ -67,7 +67,7 @@
             {{ course.subject }}
           </div>
           <div>
-            <span>{{ course.startTime | date: 'HH:mm' }}</span> -
+            <span>{{ course.startTime - 3600000 | date: 'HH:mm' }}</span> -
             <span *ngFor="let room of course.room">
               {{ room }}
             </span>

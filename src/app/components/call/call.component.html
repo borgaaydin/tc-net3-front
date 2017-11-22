@@ -12,15 +12,15 @@
       </h3>
       <div>
         <span>
-          {{ course.startTime | date: 'HH:mm' }}
+          {{ course.startTime - 3600000 | date: 'HH:mm' }}
         </span>
         <span> - </span>
         <span>
-          {{ course.endTime | date: 'HH:mm' }}
+          {{ course.endTime - 3600000 | date: 'HH:mm' }}
         </span>
 
         <span>
-          {{ course.startTime | date: 'EEEE dd MMMM yyyy' }}
+          {{ course.startTime - 3600000 | date: 'EEEE dd MMMM yyyy' }}
         </span>
       </div>
 

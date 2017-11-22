@@ -39,7 +39,7 @@ export class ProfileComponent implements OnInit {
           unSelectAllText: 'Tout supprimer',
           enableSearchFilter: true,
           classes: 'myclass custom-class',
-          searchPlaceholderText: 'Recherche',
+          searchPlaceholderText: 'Rechercher',
           groupBy: 'year',
           enableCheckAll: false
         };
@@ -55,7 +55,8 @@ export class ProfileComponent implements OnInit {
           const dropdownSubjects = JSON.parse(JSON.stringify(this.subjects)
             .split('"_id":').join('"id":').split('"name":').join('"itemName":'));
           this.dropdownList = dropdownSubjects;
-          this.selectedItems = this.model.subjects;
+          this.selectedItems = JSON.parse(JSON.stringify(this.model.subjects)
+            .split('"_id":').join('"id":').split('"name":').join('"itemName":'));
         });
     }
 
@@ -64,7 +65,7 @@ export class ProfileComponent implements OnInit {
         if (!this.model.isTeacher) {
           this.model.subjects = [];
           this.selectedItems.forEach(eachObj => {
-            let item = eachObj.itemName;
+            let item = { id_: eachObj.id, name: eachObj.itemName, year: eachObj.year };
             this.model.subjects.push(item);
           });
         }
