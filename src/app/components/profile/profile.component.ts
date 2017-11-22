@@ -30,7 +30,6 @@ export class ProfileComponent implements OnInit {
     ngOnInit() {
         this.model = this.currentUser;
         this.loadUser();
-        this.loadSubjects();
 
         this.dropdownSettings = {
           singleSelection: false,
@@ -46,7 +45,13 @@ export class ProfileComponent implements OnInit {
     }
 
     private loadUser() {
-        this.userService.current().subscribe(user => { this.model = user; });
+        this.userService.current().subscribe(user => {
+            this.model = user;
+
+            if ( !this.model.isTeacher ) {
+                this.loadSubjects();
+            }
+        });
     }
 
     private loadSubjects() {
