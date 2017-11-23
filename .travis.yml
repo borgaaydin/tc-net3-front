@@ -10,7 +10,7 @@ addons:
 before_script:
 - npm install -g @angular/cli
 script:
-- ng build --prod
+- ng build --prod --output-path=$TRAVIS_BUILD_DIR/dist
 before_deploy:
 - openssl aes-256-cbc -K $encrypted_7c19c5f7428f_key -iv $encrypted_7c19c5f7428f_iv
   -in deploy_rsa.enc -out /tmp/deploy_rsa -d
