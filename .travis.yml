@@ -20,7 +20,7 @@ before_deploy:
 deploy:
   skip_cleanup: true
   provider: script
-  script: ssh $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH "rm -rf $DEPLOY_PATH/*" && scp -r $TRAVIS_BUILD_DIR/dist/* $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
+  script: ssh $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH "rm -rf $DEPLOY_PATH/*"; scp -r $TRAVIS_BUILD_DIR/dist/* $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
   on:
     branch: master
 env:
