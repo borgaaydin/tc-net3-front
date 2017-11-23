@@ -1,4 +1,7 @@
-# TcNet3
+# tc-net3-front - absence manager
+
+[![Travis](https://img.shields.io/travis/rust-lang/rust.svg)](https://travis-ci.org/pkuhner/tc-net3-front)
+[![David](https://img.shields.io/david/expressjs/express.svg)](https://david-dm.org/pkuhner/tc-net3-front)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.4.
 
