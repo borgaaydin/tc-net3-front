@@ -18,6 +18,7 @@ before_deploy:
 - chmod 600 /tmp/deploy_rsa
 - ssh-add /tmp/deploy_rsa
 deploy:
+  skip_cleanup: true
   provider: script
   script: scp -r $TRAVIS_BUILD_DIR/dist/* $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
   on:
