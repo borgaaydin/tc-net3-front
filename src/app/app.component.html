@@ -9,7 +9,6 @@
         <div class="navbarRight">
           <a class="white-button profile-button" [routerLink]="['/profile']">Profile</a>
           <a class="white-button logout-button" [routerLink]="['/login']">Logout</a>
-          {{ build?.build }}
         </div>
       </div>
     </div>
@@ -21,3 +20,8 @@
     </div>
   </div>
 </div>
+<footer class="footer">
+  <div class="footer-container">
+    <p class="text-muted">Build date: {{ build?.build }}</p>
+  </div>
+</footer>

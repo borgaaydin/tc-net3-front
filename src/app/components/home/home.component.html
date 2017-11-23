@@ -53,7 +53,7 @@
       </div>
     </div>
 </div>
-<div class="col-sm-6 home__right-block">
+<div *ngIf="currentUser.isTeacher" class="col-sm-6 home__right-block">
   <div class="home__rb-head">
     <h3>
       Aujourd'hui et demain...

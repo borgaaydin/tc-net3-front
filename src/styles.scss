@@ -15,6 +15,33 @@ body {
   background-color: #EFF0F4;
 }
 
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
+}
+
+.footer-container {
+  width: auto;
+  max-width: 680px;
+  padding: 0 15px;
+}
+.footer-container .text-muted {
+  margin: 20px 0;
+}
+
 .navbar {
   display: flex;
   align-items: center;
