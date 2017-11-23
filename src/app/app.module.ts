@@ -11,7 +11,7 @@ import { routing } from './app.routes';
 import { customHttpProvider } from './injectables/helpers/index';
 import { AlertComponent } from './components/alert/index';
 import { AuthGuard } from './injectables/guards/index';
-import { AlertService, AuthenticationService, UserService, SubjectService, CourseService } from './services/index';
+import { AlertService, AuthenticationService, UserService, SubjectService, CourseService, VersionService } from './services/index';
 import { HomeComponent } from './components/home/index';
 import { LoginComponent } from './components/login/index';
 import { RegisterComponent } from './components/register/index';
@@ -44,7 +44,8 @@ import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
     AuthenticationService,
     UserService,
     SubjectService,
-    CourseService
+    CourseService,
+    VersionService
   ],
   bootstrap: [AppComponent]
 })
