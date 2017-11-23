@@ -1,0 +1,32 @@
+language: node_js
+node_js:
+- stable
+branches:
+  only:
+  - master
+addons:
+  ssh_known_hosts:
+  - tc-net3.pcksr.net
+before_script:
+- npm install -g @angular/cli
+script:
+- ng build --prod
+before_deploy:
+- openssl aes-256-cbc -K $encrypted_4a0e339593f4_key -iv $encrypted_4a0e339593f4_iv
+  -in deploy_rsa.enc -out /tmp/deploy_rsa -d
+- eval "$(ssh-agent -s)"
+- chmod 600 /tmp/deploy_rsa
+- ssh-add /tmp/deploy_rsa
+deploy:
+  provider: script
+  script: scp -r dist/* $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
+  on:
+    branch: master
+env:
+  global:
+  - secure: mmVgCL1DRXjuL98+bi7UQUvVz63N1K6TvrENzYGpNjy2/sb+guWJQhLoS3c1wVVX94IYsnsiT0bcZR9Be1TUtj6IaiRuQ8cBDE8QV9scaVr3swrF/6OnFzSn2GjMhnBs1WEK+Sv3V+IQUC2qvStqvlYK2zCMu0MbPA8EeS+E64LhkoxGuz/VIo9vTv7dIux7t6c6oaqRv12QeXMvhjmZpz1Hgo+UruUPl0kEJq5CcShuusmrRLwB7Nq0j+GG/UhsdsnL0UffBwAqN3eErKihyBuyGdTOl7+BS5AUqer0fxgzv0fIKgqunflhuF3tsaOP5FRJ2NkfB6RUronBV/xCQsQ+wFvwWFF636MYt4onjYQSKbz56TrU0l/3pBNtchnR1Oxg96neP6PzghDxmUV8gJiJMrJy7gKy8w57kF672hjIDT6W0jWF2saxbJLYtDh7wyv8NkLYqAMTaMgpC6aYsz2jxR5y7eyBOz4dlMckG6LryxdGg9Y7ELZfJCZ1crHHDrIVVGVgMJzC5f8oVTtvl9md/g8tkG+S3BkohRU9WyLwiak7d7XOD7LcQAixBxk1cOQEwuf6gUrfl10w8kjGUbouzoALsseY0eQdfRc8trnF+Pcunwta6f0Np1eu5f0ZKq2+Mqejd5CXEnnirohVcRpt+hOPI1WcudQoFtcaOFo=
+  - secure: ZDpOA8rXYQWTvMBF2sBkYQ9Uyh6z8zngfiZ1CPAEcIo6CCd4tPbjgckMQ3xmPT7Hod0bgBB3z8cnwZg1DIFfHZRdMsOi1x0l8Fh1ZIsIIQDAnVT1uQ65i/6p6DJgSGuQZTwTZD5PfUwerKqhMP5tcpHr4N6jM6b6mLtfV8w8DTyc3d7BMf5FemmgOarn+WxWMrQn7uJyNFsf+zE6K7b9aQzoWZkxvhMGwhKwzk01mZHPCl3MwRscyaTtgJVJcjSmIXRGpPd8z9Qm9/zOQzlcdW87P3vjg9kTzBXguqGDcEiTrTq7hP+Aup0n20qmx8xVlFEqp/lQ1O6lJQEs7gJg6vqSY2TMQ7KckrQkoPlGAsX1xm1k3Dtp99zYxySxSKzFAxQLMNXRm6EHmtNooO5HJtzRju+5/4ud8nYN4mGt5fwh597+B/AL7NsZy51njI6VEsXk0Dz5t5/cr3ZxFJZJJPAMlGhBYoboFR+ZCDmY2gQPj0FEeaAFoUL3pzOj1XCleb9k0qqxG2z1kAKXBmaNAnnfpF8SrBZaGyV8iAI6gbqzEAEqnj4zgPFIOIPXqI2TJ0Rh/+Gpg391vi1HM7o2Cnr2CFDvzPp8vkrAbAk9r715qlUuD4JbYQBbzYf8aOihPNcMWA9AqwDWe/qqwraXtjN4S/tQZxhnXOkr112DvpU=
+  - secure: PjHEuCqY1OcbTvS89AIqjhazs0JrSNmAGXwKXlwSGPXwQ9Usxw+hafQ6DxA+GXK3RcprlHHPB8lwHynfD1FZSx4k3aoWoFT/aFQKJsvts27QIAxpggnfqMsm6hvZyFxrxnDU5/Gsa2rL8QKv5MsTD8gp9vpboKFiXgxuzql3vQophRwLdt/dVRz/BhkYnOlYaof+GOToUJhos+0jSXEJnfses/jjz/RPsRbwtxBVjWBzXVdBp8f2LXKOfoA/mZSfhAwp65klL6fgmAzp0+6BV0AmG/8k3Qx/+p1eAQ3zTnoG1mBqb8ud2K3Hy2VaqoKKL0MtRokgLrwZp1n7nTc+nEEwc0X/N3BT2aeLAbB58dJkvUFBpF2bz3g47Fagcdnjft9uWOoB+ibH910mvimKO3a24oCZoEQiSBi8EyJr24lASHYAAqVtQiKfnsw9xn7h0g24BJbLb9ynAL7za948hxhb7RJZ7vNqIwvWwO0G8adagFyh/tMwsb+d27e38xWFMTb6GCcDCbkhgl3QVu0PgUSJzmSXyyOi9YW0tJPfV4RFo7vh1WQ15CJIxl/hzGUW07Db73ArLh+gJ9++XZin4epyApYDqeSzNzTWTaJ79o5lqqC10M+ZRIHe5B5IEaTammLviJw63D5Gbjz8hEwaSMWkE866Wh8iB9Y6rQ4tbs0=
+before_install:
+- openssl aes-256-cbc -K $encrypted_7c19c5f7428f_key -iv $encrypted_7c19c5f7428f_iv
+  -in deploy_rsa.enc -out deploy_rsa -d
