@@ -11,7 +11,7 @@ import { VersionService } from './services/index';
 
 export class AppComponent implements OnInit {
   title = 'app';
-  build: string = "";
+  build: any = {};
 
   constructor(
       private versionService: VersionService,
