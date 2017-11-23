@@ -70,7 +70,7 @@ export class ProfileComponent implements OnInit {
         if (!this.model.isTeacher) {
           this.model.subjects = [];
           this.selectedItems.forEach(eachObj => {
-            let item = { id_: eachObj.id, name: eachObj.itemName, year: eachObj.year };
+            const item = { _id: eachObj.id, name: eachObj.itemName, year: eachObj.year };
             this.model.subjects.push(item);
           });
         }
