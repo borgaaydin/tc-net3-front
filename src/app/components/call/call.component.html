@@ -1,6 +1,12 @@
 <div class="col-xs-12 col-md-8 col-md-offset-2">
   <h2>
-    Fiche d'Appel ( {{ absents.length }} absents / {{ noStudents }} étudiants)
+    Fiche d'Appel ( {{ absents.length }}
+    <span [ngPlural]="absents.length">
+       <ng-template ngPluralCase="=0">absent</ng-template>
+       <ng-template ngPluralCase="=1">absent</ng-template>
+       <ng-template ngPluralCase="other">absents</ng-template>
+    </span>
+    / {{ noStudents }} étudiants)
   </h2>
   <div class="callroll__head">
     <div class="callroll__title">
