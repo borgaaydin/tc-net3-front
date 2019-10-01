@@ -1,5 +1,7 @@
 # tc-net3-front - absence manager
 
+/!\ This project is no longer maintained /!\
+
 [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)](https://travis-ci.org/pkuhner/tc-net3-front)
 [![David](https://img.shields.io/david/expressjs/express.svg)](https://david-dm.org/pkuhner/tc-net3-front)
 
